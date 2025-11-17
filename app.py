@@ -1,10 +1,6 @@
-
-### TODO: , instead of os VU proposal
-
-
 from flask import Flask, jsonify, request, render_template, redirect, url_for, abort
 from data_manager import DataManager
-from models import db, Movie
+from models import db
 from api import data_fetcher
 from pathlib import Path
 
@@ -50,6 +46,7 @@ def is_movie(movie_id):
 # ---------- HOME ROUTE ----------
 @app.route('/')
 def home():
+    """Render the homepage."""
     users = data_manager.get_users()
     return render_template('index.html', users=users)
 
