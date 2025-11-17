@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container">
+
+    <h2>Edit Movie</h2>
+    <form method="POST" class="add-movie-form">
+        <label>Title:</label>
+        <input type="text" name="title" value="{{ movie.title }}" required>
+
+        <label>Comment:</label>
+        <textarea name="comment">{{ movie.comment }}</textarea>
+
+        <button type="submit" class="submit-button">Save</button>
+    </form>
+
+    <a href="{{ url_for('get_movies', user_id=user_id) }}" class="back-link">⬅ Back</a>
+</div>
+{% endblock %}

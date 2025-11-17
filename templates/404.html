@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="error-container">
+    <h1>404</h1>
+    <p>{{ error.description if error else "Page not found." }}</p>
+
+    <a href="{{ url_for('home') }}" class="home-link">🏠 Back to Home</a>
+</div>
+{% endblock %}

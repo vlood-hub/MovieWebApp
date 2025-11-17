@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Users</h2>
+
+<!-- User Cards Grid -->
+<ul class="user-list">
+  {% for user in users %}
+  <li class="user-card">
+    <a href="{{ url_for('get_movies', user_id=user.id) }}">
+      {{ user.name }}
+    </a>
+
+    <!-- Delete user button -->
+    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" class="delete-user-form">
+      <button class="emoji-btn delete-user-btn">🗑️</button>
+    </form>
+
+  </li>
+  {% endfor %}
+</ul>
+
+<h3>Add New User</h3>
+
+<form action="{{ url_for('add_user') }}" method="POST" class="add-user-form">
+  <input type="text" name="name" placeholder="Enter user name" required>
+  <button type="submit" class="btn-primary">➕ Add User</button>
+</form>
+
+{% endblock %}

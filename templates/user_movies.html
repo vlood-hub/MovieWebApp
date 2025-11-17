@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ user.name }}’s Favorite Movies</h2>
+
+<!-- Add Movie Form -->
+<form action="{{ url_for('add_movie', user_id=user.id) }}"
+      method="POST" class="add-movie-form movie-card">
+
+  <h3>Add a New Movie</h3>
+
+  <input type="text" name="title" placeholder="Movie Title" required>
+  <textarea name="comment" placeholder="Comment (optional)"></textarea>
+  <button type="submit" class="btn-primary">➕ Add Movie</button>
+</form>
+
+<!-- Movie List -->
+<ul class="movie-list">
+  {% for movie in movies %}
+  <li class="movie-item">
+
+      <div class="movie-top">
+          <div class="movie-poster-wrap">
+              <img src="{{ movie.poster }}" class="movie-poster">
+          </div>
+
+          <div>
+              <strong>{{ movie.title }}</strong><br>
+              <strong>Year:</strong> {{ movie.year }}<br>
+              <strong>Rating:</strong> {{ movie.rating }}<br>
+              {% if movie.comment %}
+                <strong>Comment:</strong> {{ movie.comment }}
+              {% endif %}
+          </div>
+      </div>
+
+      <div class="movie-actions">
+          <a href="{{ url_for('update_movie', user_id=user.id, movie_id=movie.id) }}" class="emoji-btn">✏️</a>
+          <form method="POST" action="{{ url_for('delete_movie', user_id=user.id, movie_id=movie.id) }}" class="inline-form">
+              <button class="emoji-btn">🗑️</button>
+          </form>
+      </div>
+
+  </li>
+  {% endfor %}
+</ul>
+
+<a href="{{ url_for('home') }}" class="home-link">🏠 Home</a>
+
+{% endblock %}

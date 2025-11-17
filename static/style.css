@@ -1,0 +1,307 @@
+/* ---------------------------
+   GLOBAL STYLING
+--------------------------- */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  margin: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #444;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------------------------
+   FORMS
+--------------------------- */
+input, textarea, button {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.add-movie-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 350px;
+  margin: 0 auto 25px auto;
+}
+
+.add-movie-form input,
+.add-movie-form textarea {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.add-movie-form button {
+  padding: 10px;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.add-movie-form button:hover {
+  background: #005fcc;
+}
+
+/* ---------------------------
+   MOVIE LIST — GRID LAYOUT
+--------------------------- */
+.movie-list {
+  list-style: none;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* ---------------------------
+   MOVIE CARD STYLE
+--------------------------- */
+.movie-item {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.movie-top {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Poster */
+.movie-poster-wrap img {
+  width: 80px;
+  border-radius: 6px;
+}
+
+/* ---------------------------
+   ACTION BUTTONS
+--------------------------- */
+.movie-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.emoji-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  padding: 3px;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ---------------------------
+   BUTTONS / LINKS
+--------------------------- */
+.home-link {
+  display: block;
+  text-align: center;
+  margin-top: 25px;
+  font-size: 1.2rem;
+}
+
+/* ---------------------------
+   INDEX PAGE USER LIST
+--------------------------- */
+.user-list {
+  list-style: none;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.user-card a {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.user-card:hover {
+  transform: scale(1.03);
+  transition: 0.2s ease-in-out;
+  border-color: #bbb;
+}
+
+/* Users grid */
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.user-card {
+  background: white;
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.user-card a {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.user-card:hover {
+  transform: scale(1.03);
+  border-color: #bbb;
+}
+
+/* Add user form */
+.add-user-form {
+  margin-top: 25px;
+  max-width: 400px;
+}
+
+.add-user-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn-primary {
+  margin-top: 10px;
+  padding: 10px;
+  background: #0077ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #005fcc;
+}
+
+/* User cards grid */
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* User card */
+.user-card {
+  position: relative;  /* allows absolute-positioned trash icon */
+  background: rgb(82, 126, 165);
+  padding: 18px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  transition: 0.2s;
+}
+
+.user-card:hover {
+  transform: scale(1.03);
+  border-color: #bbb;
+}
+
+/* Username link */
+.user-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Delete icon in lower-right corner */
+.delete-user-form {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+}
+
+.delete-user-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.delete-user-btn:hover {
+  transform: scale(1.25);
+  color: #cc0000;
+}
+
+/* Error Page */
+.error-container {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.error-container h1 {
+    font-size: 80px;
+    color: #cc0000;
+    margin-bottom: 10px;
+}
+
+.error-container p {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+}
+
+.error-container .home-link {
+    padding: 10px 18px;
+    background: #0077ff;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+.error-container .home-link:hover {
+    background: #005fcc;
+}
