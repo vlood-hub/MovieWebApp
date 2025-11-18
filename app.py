@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template, redirect, url_for, abort
 from data_manager import DataManager
-from models import db
+from models import db, Movie
 from api import data_fetcher
 from pathlib import Path
 
@@ -99,22 +99,31 @@ def add_movie(user_id):
             return jsonify({"message": "Movie already exists"}), 400
         else:
             try:
-                movie = data_fetcher.fetch_data(new_title_cap)
+                fetch_movie = data_fetcher.fetch_data(new_title_cap)
             except KeyError:
                 return jsonify({"error": "Movie not found"}), 404
             except TypeError:
                 pass
 
-        data_manager.add_movie(
-            user_id, movie['Title'],
-            movie['Year'],
-            movie['imdbRating'],
-            movie['Poster'],
-            comment
+        new_movie = Movie(
+            title=fetch_movie.get("Title", new_title_cap),
+            year=fetch_movie.get("Year", None),
+            rating=fetch_movie.get("imdbRating", None),
+            poster=fetch_movie.get("Poster", None),
+            comment=comment,
+            user_id=user_id,
             )
+        data_manager.add_movie(new_movie)
+        # data_manager.add_movie(
+        #     user_id, fetch_movie['Title'],
+        #     fetch_movie['Year'],
+        #     fetch_movie['imdbRating'],
+        #     fetch_movie['Poster'],
+        #     comment
+        #     )
         return redirect(url_for('get_movies', user_id=user_id))
 
-    # GET -> render add form; pass user so template can build action URLs if needed
+    # Handle GET (render add form)
     return render_template('add_movie.html', user=user)
 
 
@@ -125,9 +134,10 @@ def update_movie(user_id, movie_id):
 
     # Handle POST (save changes)
     if request.method == 'POST':
-        movie.title = request.form.get('title')
-        movie.comment = request.form.get('comment')
-        db.session.commit()
+        new_title = request.form.get('title')
+        new_comment = request.form.get('comment')
+        data_manager.update_movie(movie_id, new_title, new_comment)
+        #db.session.commit()
         return redirect(url_for('get_movies', user_id=user_id))
 
     # Handle GET (show edit page)
@@ -147,4 +157,4 @@ if __name__ == '__main__':
     with app.app_context():
         db.create_all()
 
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
