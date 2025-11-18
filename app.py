@@ -114,13 +114,7 @@ def add_movie(user_id):
             user_id=user_id,
             )
         data_manager.add_movie(new_movie)
-        # data_manager.add_movie(
-        #     user_id, fetch_movie['Title'],
-        #     fetch_movie['Year'],
-        #     fetch_movie['imdbRating'],
-        #     fetch_movie['Poster'],
-        #     comment
-        #     )
+
         return redirect(url_for('get_movies', user_id=user_id))
 
     # Handle GET (render add form)
@@ -137,7 +131,7 @@ def update_movie(user_id, movie_id):
         new_title = request.form.get('title')
         new_comment = request.form.get('comment')
         data_manager.update_movie(movie_id, new_title, new_comment)
-        #db.session.commit()
+
         return redirect(url_for('get_movies', user_id=user_id))
 
     # Handle GET (show edit page)

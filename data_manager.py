@@ -38,22 +38,6 @@ class DataManager:
         return Movie.query.get(movie_id)
 
 
-    # def add_movie(self, user_id, title, year, rating, poster, comment=None):
-    #     """Add a new movie to a user's list."""
-    #     user = self.get_users(user_id)
-
-    #     new_movie = Movie(
-    #         title=title,
-    #         year=year,
-    #         rating=rating,
-    #         poster=poster,
-    #         comment=comment,
-    #         user_id=user.id
-    #         )
-
-    #     db.session.add(new_movie)
-    #     db.session.commit()
-
     def add_movie(self, new_movie):
         """Add a new movie to database."""
         db.session.add(new_movie)
